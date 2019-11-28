@@ -2,7 +2,7 @@
 @extends('master')
 
 @section('content')
-    <form action="" method="POST">
+    <form action="{{ route('signin.store') }}" method="POST">
         {!! csrf_field() !!} 
 
         <div>
@@ -35,11 +35,12 @@
             </div>
         </div>
     </form>
-    <form method="GET" action="{{route('register.index')}}">
+    <a href ="{{route('register.index')}}">register</a>
+    <!-- <form method="GET" action="{{route('register.index')}}">
         <div>
             <div>
                 <input type="button" id="go_register" name="go_register" value="register">
             </div>
         </div>
-    </form>
+    </form> -->
 @stop

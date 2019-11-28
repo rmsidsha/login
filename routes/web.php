@@ -37,8 +37,9 @@ Route::get('boot', function () {
 // Auth::routes();
 Route::resource('register', 'UsersController');
 Route::resource('signin', 'SigninController');
-Route::delete('logout', [
-    'as' => 'logout',
-    'uses' => 'SigninController@ttt',
-]);
+Route::delete('logout', 'SigninController@logout_user')->name('logout');
+// [
+//     'as' => 'logout',
+//     'uses' => 'SigninController@logout_user',
+// ]
 Route::resource('home', 'HomeController');

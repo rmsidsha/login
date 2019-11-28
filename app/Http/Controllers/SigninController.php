@@ -17,7 +17,10 @@ class SigninController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    
+    public function __construct()
+    {
+        $this->middleware('guest')->except('logout_user');
+    }
 
     public function index()
     {
@@ -51,7 +54,6 @@ class SigninController extends Controller
             flash('Password was not matched');
             return back()->withInput();
         }
-//dfasfa
         if(! auth()->user()->user_id){
             auth()->logout();
             flash('가입 안되어 있음');
@@ -103,11 +105,11 @@ class SigninController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function ttt(Request $request)
+    public function logout_user(Request $request)
     {
         auth()->logout();
         flash('로그아웃 완료');
-
+        
         return redirect('/boot');
     }
 }

@@ -57,21 +57,13 @@
       </div>
     </div>
       <div class="Login">
-            <div class="top-right links">
-            @if(auth()->guest()) 
+            <!-- @if(auth()->guest()) 
               <form action="{{ route('signin.index') }}" method="GET" >
               @csrf
               <button type="submit" class="btn btn-primary">login</button>
               </form>
+              <a href="{{ route( 'signin.index' ) }}"> login </a>
             @else
-              
-                <!-- {{ method_field('DELETE') }} -->
-                <!-- @method('delete')
-                {{ csrf_field() }} -->
-                <!-- <a href="{{url('/signin')}}">logout</a> -->
-                <!-- <p>{{auth()->user()->user_id}} 님 환영합니다</p> -->
-                <!-- <input type="submit" name="logout" value="logout">logout</button> -->
-                <!-- <a href="{{ route('signin.destroy', ['id'=>auth()->user()->id ]) }}"></a> -->
                 <form action="{{ route('logout') }}" method="POST">
                   {{ csrf_field() }}
                   {{ method_field('DELETE') }}
@@ -81,10 +73,30 @@
                       <button type="submit" class="btn btn-primary">삭제</button>
                   </div>
                 </form>
-
-            @endif
+                <p>{{auth()->user()->user_id}} 님 환영합니다</p>
+                <a href = "{{ route('logout') }}">logout</a>
+            @endif -->
+                <div class="top-right links">
+                    @auth
+                        <!-- <a href="{{ url('/boot') }}">Home</a> -->
+                        <p>{{auth()->user()->user_id}} 님 환영합니다</p>
+                        <form action="{{ route('logout') }}" method="POST">
+                        {{ csrf_field() }}
+                        {{ method_field('DELETE') }}
+                        @method('delete')
+                          <!-- <a href = "{{ route('logout')}}">logout</a> -->
+                          <div class="form-group">
+                            <button type="submit" class="btn btn-primary">삭제</button>
+                          </div>
+                        </form>
+                    @else
+                        <a href="{{ route('signin.index') }}">Login</a>
+                        @if (Route::has('register'))
+                            <a href="{{ route('register.index') }}">Register</a>
+                        @endif
+                    @endauth
+                </div>
             </div>
-      </div>
   </nav>
  
   <header> 

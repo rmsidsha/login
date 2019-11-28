@@ -16,6 +16,11 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('guest');
+    }
+
     public function index()
     {
         return view('register');
@@ -43,6 +48,8 @@ class UsersController extends Controller
             'user_id' => 'required|max:255|unique:users',
             'email' => 'required|max:255',
             'password' => 'required|string|confirmed|min:6',
+            'birth' => 'required|string|max:255',
+            'phone' => 'required|string|max:255',
             //'password-confirm' =>'required|string|min:6'
         ]);
         
@@ -62,7 +69,7 @@ class UsersController extends Controller
         
         flash('가입 완료');
         
-        return view('login');
+        return view('signin');
     }
 
     /**
