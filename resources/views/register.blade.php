@@ -27,10 +27,17 @@
                     @enderror
 				</div>
 			</div>
-			<!-- <form>
-  Telephone:
-  <input type="tel" name="phone" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}">
-</form> -->
+			<div class="form-group">
+				<label for="name"> {{ __('name')}} </label>	
+				<div class="register-name">
+					<input id="name" type="name" name="name" required  value="{{ old('name') }}" autocomplete="name">
+                    @error('name')
+                        <span class="inavlid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>  
+                        </span>
+                    @enderror
+				</div>
+			</div>
 			<div class="form-group">
 				<label for="phone"> {{ __('Phone')}} </label>	
 				<div class="register-phone">
