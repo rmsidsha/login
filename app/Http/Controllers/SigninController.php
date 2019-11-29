@@ -51,7 +51,7 @@ class SigninController extends Controller
         ]);
 
         if(! auth()->attempt($request->only('user_id', 'password'))){
-            flash('Password was not matched');
+            flash('ID혹은 비밀번호를 확인해 주세요');
             return back()->withInput();
         }
         if(! auth()->user()->user_id){
