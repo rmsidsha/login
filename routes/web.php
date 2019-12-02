@@ -11,35 +11,34 @@
 |
 */
 
-
-// Auth::routes();
-
-// Route::get('/home', 'HomeController@index')->name('home');
 Route::get('boot', function () {
     return view('boot');
 });
 
-// Route::resources([
-//     'register' => 'UsersController',
-//     'signin' => 'SigninController',
-//     'home' => 'HomeController',
-// ]);
+Route::resource('register', 'UsersController'); // 회원가입
+Route::resource('signin', 'SigninController');  // 로그인
+Route::delete('logout', 'SigninController@logout_user')->name('logout');  // 로그아웃
 
-// Route::group(['middleware' => ['web'],
-//               'middleware' => ['auth']], function(){
-//         Route::resources([
-//             'register' => 'UsersController',
-//             'signin' => 'SigninController',
-//             'home' => 'HomeController',
-//         ]);
-// });
+Route::resource('home', 'HomeController'); // 메인화면
 
-// Auth::routes();
-Route::resource('register', 'UsersController');
-Route::resource('signin', 'SigninController');
-Route::delete('logout', 'SigninController@logout_user')->name('logout');
-// [
-//     'as' => 'logout',
-//     'uses' => 'SigninController@logout_user',
-// ]
-Route::resource('home', 'HomeController');
+// Route::get('auth/reset/{token}', ...)->where('token', '[\pL-pN{64}]'); 책에 나온 대로 했는데 안됨.
+
+Route::get('remind', [
+    'as' => 'remind.create',
+    'uses' => 'PasswordsController@getRemind'
+]);
+
+Route::post('remind', [
+    'as' => 'remind.store',
+    'uses' => 'PasswordsController@postRemind'
+]);
+
+Route::get('reset/{token}', [
+    'as' => 'reset.create',
+    'uses' => 'PasswordsController@getReset'
+]);
+
+Route::post('reset', [
+    'as' => 'reset.store',
+    'uses' => 'PasswordsController@postReset'
+]);

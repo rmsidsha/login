@@ -50,7 +50,7 @@ class SigninController extends Controller
             'password' => 'required|min:6', 
         ]);
 
-        if(! auth()->attempt($request->only('user_id', 'password'))){
+        if(! auth()->attempt($request->only('user_id', 'password'), $request->has('remember'))){
             flash('ID혹은 비밀번호를 확인해 주세요');
             return back()->withInput();
         }

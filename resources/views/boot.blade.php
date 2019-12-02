@@ -57,25 +57,6 @@
       </div>
     </div>
       <div class="Login">
-            <!-- @if(auth()->guest()) 
-              <form action="{{ route('signin.index') }}" method="GET" >
-              @csrf
-              <button type="submit" class="btn btn-primary">login</button>
-              </form>
-              <a href="{{ route( 'signin.index' ) }}"> login </a>
-            @else
-                <form action="{{ route('logout') }}" method="POST">
-                  {{ csrf_field() }}
-                  {{ method_field('DELETE') }}
-            
-                  <p>{{auth()->user()->user_id}} 님 환영합니다</p>
-                  <div class="form-group">
-                      <button type="submit" class="btn btn-primary">삭제</button>
-                  </div>
-                </form>
-                <p>{{auth()->user()->user_id}} 님 환영합니다</p>
-                <a href = "{{ route('logout') }}">logout</a>
-            @endif -->
                 <div class="top-right links">
                     @auth
                         <!-- <a href="{{ url('/boot') }}">Home</a> -->

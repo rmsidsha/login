@@ -31,16 +31,11 @@
         </div>
         <div>
             <div>
-                <input id="login" type="submit" name="submit">
+                <input id="signin" type="submit" name="submit">
             </div>
         </div>
     </form>
     <a href ="{{route('register.index')}}">register</a>
-    <!-- <form method="GET" action="{{route('register.index')}}">
-        <div>
-            <div>
-                <input type="button" id="go_register" name="go_register" value="register">
-            </div>
-        </div>
-    </form> -->
+    <a href ="{{route('remind.create')}}">비번 찾기</a>
+
 @stop
